@@ -1,53 +1,17 @@
-function appendValue(value) {
-    document.getElementById('result').value += value;
-    playClickSound();
-    changeButtonColors();
-}
+function convertTemp(){
+    let temp = parseFloat(document.getElementById("temperature").value);
+    let unit = document.getElementById("unit").value;
+    let result = 0;
 
-function clearResult() {
-    document.getElementById('result').value = '';
-    playClickSound();
-    changeButtonColors();
-}
-
-
-function calculateResult() {
-    let resultBox = document.getElementById('result');
-    let expression = resultBox.value;
-    try {
-        resultBox.value = eval(expression);
-        flashDisplay();
-    } catch (e) {
-        resultBox.value = "Error";
-        flashDisplay();
+    if(isNaN(temp)){
+        document.getElementById("result").innerText="Please Enter Valid Number";
+        return;
     }
-    playClickSound();
-    changeButtonColors();
-}
-
-//play button click sound
-function playClickSound() {
-    const sound =document.getElementById("clickSound");
-    sound.currentTime=0;
-    sound.play();
-}
-
-
-function getRandomColor() {
-    return "#" + Math.floor(Math.random() * 16777215).toString(16);
-}
-
-// Flash effect on display
-function flashDisplay() {
-    let resultBox = document.getElementById('result');
-    resultBox.classList.add('flash');
-    setTimeout(() => resultBox.classList.remove('flash'), 200);
-}
-
-// Change button colors randomly
-function changeButtonColors() {
-    let buttons = document.querySelectorAll("button");
-    buttons.forEach(button => {
-        button.style.backgroundColor = getRandomColor();
-    });
+    if(unit==="CtoF"){
+        result=(temp*9/5)+32;
+        document.getElementById("result").innerText=`${temp}°C = ${result.toFixed(2)}°F`;
+    }else{
+        result=(temp-32)*5/9;
+        document.getElementById("result").innerText=`${temp}°F = ${result.toFixed(2)}°C`;
+    }
 }

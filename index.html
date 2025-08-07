@@ -3,39 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ultimate Fun Calculator</title>
+    <title>Temperature</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Temperature Converter</h1>
+    
+    <input type="number" id="temperature" placeholder="Enter Temperature">
 
-    <div class="calculator">
-        <input type="text" id="result" readonly>
-        <div class="buttons">
-            <button onclick="clearResult()">C</button>
-            <button onclick="appendValue('7')">7</button>
-            <button onclick="appendValue('8')">8</button>
-            <button onclick="appendValue('9')">9</button>
+    <select id="unit">
+        <option value="CtoF">Celsius to Fahrenheit</option>
+        <option value="Ftoc">Fahrenheit to Celsius</option>
+    </select>
 
-            <button onclick="appendValue('4')">4</button>
-            <button onclick="appendValue('5')">5</button>
-            <button onclick="appendValue('6')">6</button>
+    <button onclick="convertTemp()">Convert</button>
 
-            <button onclick="appendValue('1')">1</button>
-            <button onclick="appendValue('2')">2</button>
-            <button onclick="appendValue('3')">3</button>
-
-            <button onclick="appendValue('+')">+</button>
-            <button onclick="appendValue('0')">0</button>
-            <button onclick="appendValue('-')">-</button>
-            <button onclick="calculateResult('=')">=</button>
-            <button onclick="appendValue('*')">*</button>
-            <button onclick="calculateResult('/')">/</button>
-        </div>
-    </div>
-
-    <!-- Local Button Click Sound -->
-    <audio id="clickSound" src="https://www.fesliyanstudios.com/play-mp3/387" preload="auto"></audio>
-
+    <p id="result"></p>
     <script src="script.js"></script>
 </body>
 </html>
